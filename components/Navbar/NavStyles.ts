@@ -1,12 +1,12 @@
 export const OuterNavStyles = {
     color: '$background1',
     height: '88px',
-    width: '1440px',
-    padding: '32px 96px',
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     borderBottom: '5px solid $background3',
+    justifyContent: 'center',
 };
 
 export const InnerNavStyles = {
