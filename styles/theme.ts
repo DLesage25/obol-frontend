@@ -13,6 +13,7 @@ export const { styled, css, theme } = createStitches({
             lightBlue: '#243D42',
             textLight: '#D9EEF3',
             textBody: '#9CC2C9',
+            textMuted: '#475E64',
             textBlue: '#045062',
             textDark: '#091011',
         },
