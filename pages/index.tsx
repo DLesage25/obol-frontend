@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import SearchWidget from '../components/SearchWidget';
+import Layout from '../components/Layout/Layout';
 
 const Home: NextPage = () => {
-    return <SearchWidget />;
+    return <Layout>homepage</Layout>;
 };
 
 export default Home;
