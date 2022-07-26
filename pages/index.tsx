@@ -1,7 +1,8 @@
-import type { NextPage } from "next";
+import type { NextPage } from 'next';
+import SearchWidget from '../components/SearchWidget';
 
 const Home: NextPage = () => {
-  return <p>home</p>;
+    return <SearchWidget />;
 };
 
 export default Home;
