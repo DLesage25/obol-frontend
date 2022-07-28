@@ -1,34 +1,24 @@
-import { styled } from '../../styles/theme';
+import Card from '../../atoms/Card';
+import { A, Typography } from '../../atoms/Typography';
 
-const WidgetContainer = styled('div', {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    padding: '0px',
-    width: '395px',
-    height: '426px',
-    backgroundColor: '$background4',
-    borderRadius: '12px',
-});
+interface PokemonCardProps {
+    imageSrc: string;
+    title: string;
+    detail: string;
+    link: string;
+}
 
-const DetailContainer = styled('div', {
-    backgroundColor: '$background3',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '32px',
-    gap: '32px',
-    width: '395px',
-    height: '204px',
-    flex: 'none',
-    order: 1,
-    flexGrow: 0,
-});
-
-export default function PokemonCard() {
+export default function PokemonCard({
+    imageSrc,
+    title,
+    detail,
+    link,
+}: PokemonCardProps) {
     return (
-        <WidgetContainer>
-            <DetailContainer>data</DetailContainer>
-        </WidgetContainer>
+        <Card imageSrc={imageSrc}>
+            <Typography component="h5">{title}</Typography>
+            <Typography component="p">{detail}</Typography>
+            <A href={link}>Details →</A>
+        </Card>
     );
 }
