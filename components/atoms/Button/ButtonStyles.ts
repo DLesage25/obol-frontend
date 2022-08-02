@@ -9,8 +9,10 @@ const ButtonStyles = {
     backdropFilter: 'blur(4px)',
     width: '101px',
     height: '48px',
+    fontSize: '$1',
     fontWeight: '$2',
-    lineHeight: '24px',
+    lineHeight: '25px',
+    top: '12px',
     variants: {
         color: {
             primary: {

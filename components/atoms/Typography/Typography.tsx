@@ -24,7 +24,7 @@ const TypographyStyles = {
     h5: {
         color: '$textLight',
         fontSize: '$2',
-        fontWeight: '$2',
+        fontWeight: '$1',
         lineHeight: '28px',
     },
     a: {
