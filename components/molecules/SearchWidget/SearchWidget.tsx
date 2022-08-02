@@ -1,7 +1,7 @@
 import { styled } from '../../../styles/theme';
+import { Typography } from '../../atoms/Typography';
 import Button from '../../atoms/Button';
 import TextInput from '../../atoms/TextInput';
-import { Typography } from '../../atoms/Typography';
 
 const WidgetContainer = styled('div', {
     display: 'flex',
