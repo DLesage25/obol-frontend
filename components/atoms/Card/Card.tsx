@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { styled } from '../../../styles/theme';
-import { A, Typography } from '../Typography';
 
 const CardContainer = styled('div', {
     display: 'flex',

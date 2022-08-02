@@ -8,7 +8,7 @@ const globalStyles = globalCss({
         fontFamily: theme.fonts.default,
     },
     body: {
-        backgroundColor: theme.colors.background2,
+        backgroundColor: theme.colors.background1,
     },
 });
 

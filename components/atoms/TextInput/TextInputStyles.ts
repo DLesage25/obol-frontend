@@ -7,7 +7,7 @@ const TextInputStyles = {
     alignItems: 'flex-start',
     padding: '12px 16px',
     gap: '4px',
-    border: '2px solid #243D42',
+    border: '2px solid $background4',
     borderRadius: '4px',
     flex: 'none',
     order: 1,
@@ -16,6 +16,7 @@ const TextInputStyles = {
     height: '48px',
     '&:focus': {
         outline: 'none',
+        background: '$background2',
     },
 };
 

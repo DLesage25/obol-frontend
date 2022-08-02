@@ -1,5 +1,5 @@
 import { styled } from '../../../styles/theme';
-import { Typography } from '../../atoms/Typography';
+import Typography from '../../atoms/Typography';
 import Button from '../../atoms/Button';
 import TextInput from '../../atoms/TextInput';
 
@@ -14,7 +14,7 @@ const WidgetContainer = styled('div', {
 export default function SearchWidget() {
     return (
         <WidgetContainer>
-            <Typography component="h3" css={{ order: 0 }}>
+            <Typography variant="h3" css={{ order: 0 }}>
                 Search
             </Typography>
             <TextInput type="text" name="name" css={{ order: 1 }}></TextInput>

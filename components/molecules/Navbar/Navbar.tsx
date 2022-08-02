@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { styled } from '../../../styles/theme';
-import { Typography } from '../../atoms/Typography';
+import Typography from '../../atoms/Typography';
 import { InnerNavStyles, LogoSectionStyles, OuterNavStyles } from './NavStyles';
 
 const OuterNav = styled('div', OuterNavStyles);
@@ -18,7 +18,7 @@ export default function Navbar() {
                         width="108px"
                         alt="logo"
                     />
-                    <Typography component="h4">Pokemon List</Typography>
+                    <Typography variant="h4">Pokemon List</Typography>
                 </LogoSection>
             </InnerNav>
         </OuterNav>
