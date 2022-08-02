@@ -1,7 +1,7 @@
-import { styled } from '../../styles/theme';
-import Button from '../Button';
-import TextInput from '../TextInput';
-import { H3 } from '../Typography';
+import { styled } from '../../../styles/theme';
+import Button from '../../atoms/Button';
+import TextInput from '../../atoms/TextInput';
+import { Typography } from '../../atoms/Typography';
 
 const WidgetContainer = styled('div', {
     display: 'flex',
@@ -14,7 +14,9 @@ const WidgetContainer = styled('div', {
 export default function SearchWidget() {
     return (
         <WidgetContainer>
-            <H3 css={{ order: 0 }}>Search</H3>
+            <Typography component="h3" css={{ order: 0 }}>
+                Search
+            </Typography>
             <TextInput type="text" name="name" css={{ order: 1 }}></TextInput>
             <Button color="primary" css={{ order: 2 }}>
                 Submit
