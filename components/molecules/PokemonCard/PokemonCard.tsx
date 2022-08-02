@@ -1,5 +1,5 @@
 import Card from '../../atoms/Card';
-import { A, Typography } from '../../atoms/Typography';
+import Typography from '../../atoms/Typography';
 
 interface PokemonCardProps {
     imageSrc: string;
@@ -16,9 +16,11 @@ export default function PokemonCard({
 }: PokemonCardProps) {
     return (
         <Card imageSrc={imageSrc}>
-            <Typography component="h5">{title}</Typography>
-            <Typography component="p">{detail}</Typography>
-            <A href={link}>Details →</A>
+            <Typography variant="h5">{title}</Typography>
+            <Typography variant="p">{detail}</Typography>
+            <Typography variant="a" href={link}>
+                Details →
+            </Typography>
         </Card>
     );
 }

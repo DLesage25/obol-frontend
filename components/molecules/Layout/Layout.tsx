@@ -1,6 +1,17 @@
 import Head from 'next/head';
 import React from 'react';
+
 import Navbar from '../Navbar';
+import SearchWidget from '../SearchWidget';
+import { styled } from '../../../styles/theme';
+
+const PageContent = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '80px 0px',
+    gap: '48px',
+});
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
@@ -10,7 +21,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </Head>
             <main>
                 <Navbar />
-                {children}
+                <PageContent>
+                    <SearchWidget />
+                    {children}
+                </PageContent>
             </main>
         </>
     );
