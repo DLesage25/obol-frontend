@@ -36,6 +36,7 @@ const ImageContainer = styled('div', {
     flexGrow: 1,
     position: 'relative',
     borderRadius: '12px 12px 0 0',
+    backgroundColor: 'white',
 });
 
 interface CardProps {
@@ -49,8 +50,9 @@ export default function Card({ imageSrc, children }: CardProps) {
             <ImageContainer>
                 <Image
                     src={imageSrc}
-                    layout="fill"
-                    height="222px"
+                    layout="intrinsic"
+                    height="210px"
+                    width="210px"
                     alt={imageSrc}
                 />
             </ImageContainer>
