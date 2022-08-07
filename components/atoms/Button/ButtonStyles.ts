@@ -1,3 +1,9 @@
+const DisabledStyles = {
+    backgroundColor: '$background1',
+    color: '$background4',
+    border: '2px solid $background4',
+};
+
 const ButtonStyles = {
     display: 'flex',
     flexDirection: 'row',
@@ -17,18 +23,16 @@ const ButtonStyles = {
         color: {
             primary: {
                 background: '$primary',
-                borderWidth: 0,
                 color: '$textDark',
                 '&:hover': {
                     backgroundColor: '$secondary',
                     color: '$textBlue',
                 },
             },
-            disabled: {
-                color: '$background4',
-            },
+            disabled: DisabledStyles,
         },
     },
+    '&[disabled]': DisabledStyles,
 };
 
 export default ButtonStyles;

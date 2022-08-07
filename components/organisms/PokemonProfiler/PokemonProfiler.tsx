@@ -1,18 +1,18 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { useEffect, useRef } from 'react';
-import isBottom from '../../../hooks/isBottom';
+import { useEffect, useRef, useState } from 'react';
 
+import isBottom from '../../../hooks/isBottom';
 import useStore from '../../../state/store';
 import { PokemonId } from '../../../types/pokemon.type';
 import debounce from '../../../utils/debounce';
 import partitionArray from '../../../utils/partitionArray';
 import { fetchPokemon } from '../../../utils/pokeApiHttp';
 import Loader from '../../atoms/Loader/Loader';
+import PokemonLoader from '../../molecules/PokemonLoader/PokemonLoader';
 import {
     InnerContainer,
     OuterContainer,
 } from '../../atoms/PokemonProfiler/Containers';
-import PokemonLoader from '../../molecules/PokemonLoader/PokemonLoader';
 
 const ProfilerRow = ({ data }: { data: PokemonId[] }) => {
     return (
@@ -30,8 +30,10 @@ const ProfilerRow = ({ data }: { data: PokemonId[] }) => {
 };
 
 export default function PokemonProfiler() {
-    const { pokemonIds, setPokemonIds } = useStore();
-    const sortedData = partitionArray(pokemonIds, 3);
+    const { pokemonIds, setPokemonIds, searchQuery } = useStore();
+    const [sortedData, setSortedData] = useState<Array<PokemonId[]> | null>(
+        null
+    );
     const observer = useRef<HTMLDivElement>(null);
 
     const { data, isLoading, fetchNextPage, isFetchingNextPage } =
@@ -40,15 +42,24 @@ export default function PokemonProfiler() {
         });
 
     useEffect(() => {
+        setSortedData(partitionArray(pokemonIds, 3));
+    }, [pokemonIds]);
+
+    useEffect(() => {
         if (!data) return;
 
-        const pokeIds = data?.pages
+        let pokeIds: PokemonId[] = data?.pages
             .map((group, i) =>
                 group.response.map((pokemonIds: PokemonId[]) => pokemonIds)
             )
             .flat();
+
+        if (searchQuery !== '') {
+            pokeIds = pokeIds.filter((poke) => poke.name.includes(searchQuery));
+        }
+
         setPokemonIds(pokeIds);
-    }, [data, setPokemonIds]);
+    }, [data, setPokemonIds, searchQuery]);
 
     useEffect(() => {
         let debouncedFetch = debounce(fetchNextPage, 50);
