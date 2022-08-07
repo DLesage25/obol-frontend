@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+
 import Layout from '../components/molecules/Layout';
 import PokemonProfiler from '../components/organisms/PokemonProfiler';
 
