@@ -3,7 +3,7 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     images: {
-        domains: ['hatrabbits.com'],
+        domains: ['img.pokemondb.net'],
     },
 };
 

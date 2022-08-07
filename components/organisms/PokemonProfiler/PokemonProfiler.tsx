@@ -1,4 +1,8 @@
+import { useQuery } from '@tanstack/react-query';
+
+import useStore from '../../../state/store';
 import { styled } from '../../../styles/theme';
+import { PokemonId } from '../../../types/pokemon.type';
 import partitionArray from '../../../utils/partitionArray';
 import PokemonCard from '../../molecules/PokemonCard';
 
@@ -18,31 +22,50 @@ const InnerContainer = styled('div', {
     padding: '0px, 80px',
 });
 
-const PokemonData = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => ({
-    imageSrc: 'https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg',
-    title: 'Pickachu',
-    detail: 'This poken can chu and cha and turn it all around lorem ipsum lorem dolor.',
-    link: 'https://go.com',
-}));
+const fetchPokemonProfile = async (url: string) => {
+    const res = await fetch(url);
+    return res.json();
+};
 
-const ProfilerRow = ({ data }: any) => {
+const PokemonCardLoader = ({ pokemonId }: { pokemonId: PokemonId }) => {
+    const { url, name } = pokemonId;
+
+    const { data } = useQuery(['pokemonProfile', url], () =>
+        fetchPokemonProfile(url)
+    );
+
+    const link = `https://bulbapedia.bulbagarden.net/wiki/${name}`;
+    const imageSrc = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
+    return (
+        <PokemonCard
+            key={Math.random()}
+            title={name}
+            imageSrc={imageSrc}
+            profile={data}
+            link={link}
+        />
+    );
+};
+
+const ProfilerRow = ({ data }: { data: PokemonId[] }) => {
     return (
         <InnerContainer>
-            {data.map((pokemonDetails: any) => (
-                <PokemonCard
-                    key={Math.random()}
-                    title={pokemonDetails.title}
-                    imageSrc={pokemonDetails.imageSrc}
-                    detail={pokemonDetails.detail}
-                    link={pokemonDetails.link}
-                />
-            ))}
+            {data.map((pokemonId) => {
+                return (
+                    <PokemonCardLoader
+                        key={`pokemoncardloader-${pokemonId.name}`}
+                        pokemonId={pokemonId}
+                    />
+                );
+            })}
         </InnerContainer>
     );
 };
 
 export default function PokemonProfiler() {
-    const sortedData = partitionArray(PokemonData, 3);
+    const { pokemonIds } = useStore();
+
+    const sortedData = partitionArray(pokemonIds, 3);
 
     return (
         <OuterContainer>
