@@ -55,6 +55,7 @@ interface TypographyProps {
     children: React.ReactNode;
     css?: CSS<any>;
     href?: string;
+    target: string;
 }
 
 /**

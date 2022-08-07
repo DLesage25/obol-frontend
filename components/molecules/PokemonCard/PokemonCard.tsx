@@ -35,7 +35,7 @@ export default function PokemonCard({
                 <Skeleton height={160} width="100%" />
             )}
             {link ? (
-                <Typography variant="a" href={link}>
+                <Typography variant="a" href={link} target="_blank">
                     Details →
                 </Typography>
             ) : (
